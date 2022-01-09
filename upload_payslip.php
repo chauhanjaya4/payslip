@@ -28,8 +28,7 @@ if(!empty(array_filter($_FILES['files']['name'])))
 
 			// Set upload file path
 			$filepath = $upload_dir.$file_name;
-    }//for each
-			// Check file type is allowed or not
+      // Check file type is allowed or not
 			if(in_array(strtolower($file_ext), $allowed_types)) {
 
 				// Verify file size - 2MB max
@@ -39,29 +38,36 @@ if(!empty(array_filter($_FILES['files']['name'])))
 				// front of name of the file to avoid overwriting of file
 				if(file_exists($filepath)) {
 
-          echo"<script>
-        alert('file already exists');
-       </script>";
+          
 					$filepath = $upload_dir.time().$file_name;
+          if($key==$value)
+          {
+            echo"<script>
+            alert('file already exists');
+           </script>";
+          }
         }//file exists
 
 					else 
           
           { 
             
+            
             move_uploaded_file($file_tmpname, $filepath);
 
-            echo"<script>
+            /*echo"<script>
             alert('file uploaded successfully');
-           </script>";
+           </script>";*/
             header('Refresh:5; url=user_view.php');
-						
+            
 					}//else
 					
         }//if in array
 				
 
-        
+      
+    }//for each
+			  
 		                                                         }
 
 
